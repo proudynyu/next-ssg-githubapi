@@ -1,0 +1,30 @@
+:root {
+  --blue: #266dd3;
+  --orange: #f46036;
+  --silver: #ada8b6;
+  --gray: #cecfc7;
+  --bege: #eff8e2;
+  --black: #010400;
+  --light-black: #01161e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  color: var(--bege);
+}
+
+a {
+  color: var(--blue);
+  transition: 0.25s ease-in-out;
+}
+
+a:hover {
+  color: var(--orange);
+}
