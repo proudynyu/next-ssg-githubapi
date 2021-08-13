@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage<any> = ({ org }) => {
+const Home: NextPage<any> = ({ org, repos }) => {
   return (
     <div className={styles.container}>
       <div className={styles.perfil}>
@@ -20,6 +20,11 @@ const Home: NextPage<any> = ({ org }) => {
           </span>
         </div>
       </div>
+      <ul className={styles.repos}>
+        {repos.map((repo: any) => (
+          <li key={repo.id}>{repo.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -29,10 +34,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const user = "proudynyu";
   const userResponse = await fetch(baseUrl + user);
+  const reposResponse = await fetch(baseUrl + user + "/repos");
+
+  const userData = await userResponse.json();
+  const userRepos = await reposResponse.json();
 
   return {
     props: {
-      org: userResponse,
+      org: userData,
+      repos: userRepos,
     },
     revalidate: 60 * 60 * 24,
   };
