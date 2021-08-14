@@ -4,8 +4,10 @@
   --silver: #ada8b6;
   --gray: #cecfc7;
   --bege: #eff8e2;
+  --white: #fff;
   --black: #010400;
   --light-black: #01161e;
+  --base-transition: 0.2s ease-in-out;
 }
 
 * {
@@ -15,9 +17,14 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  color: var(--bege);
+  color: var(--white);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  height: 100%;
+  width: 100%;
 }
 
 a {

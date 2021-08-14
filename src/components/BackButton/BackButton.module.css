@@ -1,0 +1,22 @@
+.backButton {
+  width: 40px;
+  cursor: pointer;
+  height: 40px;
+  border: none;
+  color: var(--gray);
+  border-radius: 50%;
+  background-color: var(--blue);
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  transition: var(--base-transition);
+}
+
+.backButton:disabled {
+  background-color: var(--orange);
+  cursor: not-allowed;
+}
+
+.backButton:not(:disabled):hover {
+  filter: brightness(1.2);
+}

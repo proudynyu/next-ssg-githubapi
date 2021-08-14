@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage<any> = ({ org, repos }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.homeContainer}>
       <div className={styles.perfil}>
         <img
           className={styles.imgPerfil}
@@ -20,21 +20,28 @@ const Home: NextPage<any> = ({ org, repos }) => {
           </span>
         </div>
       </div>
-      <ul className={styles.repos}>
+      <div className={styles.repos}>
         {repos.map((repo: any) => (
-          <li key={repo.id}>{repo.name}</li>
+          <a key={repo.id} href={`/${repo.name}`}>
+            {repo.name}
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const baseUrl = "https://api.github.com/users/";
+  const headers = {
+    Accept: "application/vnd.github.v3+json",
+  };
 
   const user = "proudynyu";
-  const userResponse = await fetch(baseUrl + user);
-  const reposResponse = await fetch(baseUrl + user + "/repos");
+  const userResponse = await fetch(baseUrl + user, {
+    headers,
+  });
+  const reposResponse = await fetch(baseUrl + user + "/repos", { headers });
 
   const userData = await userResponse.json();
   const userRepos = await reposResponse.json();
